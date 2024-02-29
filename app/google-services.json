@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "245815440772",
+    "project_id": "connecthub-a4f1b",
+    "storage_bucket": "connecthub-a4f1b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:245815440772:android:f3ee27e7da44bc44c559d1",
+        "android_client_info": {
+          "package_name": "com.krskhalaq.connecthub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUot8GoKtxVmxksOnM2UWJZbxf2roLf1I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
