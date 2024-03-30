@@ -17,8 +17,8 @@
 
     <item
         android:id="@+id/frnds_nav"
-        android:icon="@drawable/frnds_icon"
-        android:title="Friends"/>
+        android:icon="@drawable/notification_icon"
+        android:title="Notifications"/>
 
     <item
         android:id="@+id/profile_nav"
