@@ -65,15 +65,6 @@ class PostFragment : Fragment() {
                 return@ActivityResultCallback
             }
 
-//            val imageBitmap = it.data!!.extras!!.getParcelable("data", Bitmap::class.java) as Bitmap
-//
-//            val intent = Intent(requireContext(), PostActivity::class.java)
-//            intent.putExtra("ImageBitmap", imageBitmap)
-//            startActivity(intent)
-
-//            val imgUri = it.data!!.data
-
-            //                Log.i("PostFragment", imageUri.toString())
             val intent = Intent(requireContext(), PostActivity::class.java)
             intent.putExtra("ImageUri", imageUri.toString())
             startActivity(intent)
@@ -128,9 +119,9 @@ class PostFragment : Fragment() {
         val imageFileName = "Pic$timeStamp"
         val storageDir = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "/")
         val image = File.createTempFile(
-            imageFileName,  /* prefix */
-            ".jpg",  /* suffix */
-            storageDir /* directory */
+            imageFileName,
+            ".jpg",
+            storageDir
         )
 
         return image
