@@ -9,12 +9,15 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.ktx.storage
 
 class SignUpActivity : AppCompatActivity() {
 
     companion object {
         var auth: FirebaseAuth = FirebaseAuth.getInstance()
         var dbFirebase: FirebaseDatabase = FirebaseDatabase.getInstance()
+        var storage = FirebaseStorage.getInstance()
         var uId: String = ""
     }
 
@@ -73,8 +76,8 @@ class SignUpActivity : AppCompatActivity() {
         auth.createUserWithEmailAndPassword(userEmail, userPassword)
             .addOnCompleteListener(this) {
                 if (it.isSuccessful) {
-                    var user: FirebaseUser? = auth.currentUser
-                    var userId = user!!.uid
+                    val user: FirebaseUser? = auth.currentUser
+                    val userId = user!!.uid
                     uId = userId
 
                     val dbReference = dbFirebase.getReference("Users").child(userId)

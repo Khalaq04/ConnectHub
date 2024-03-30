@@ -17,7 +17,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:title="Post Image"
         app:titleTextColor="#000000"
-        android:background="@color/medium_orange"/>
+        android:background="@color/medium_orange"
+        app:menu="@menu/post_menu"
+        app:itemIconTint="@color/black"
+        android:focusable="true"
+        android:clickable="true"
+        app:itemTextAppearanceActive="@color/black"
+        app:itemTextAppearanceInactive="@color/dark_gray"
+        android:elevation="8dp"
+        android:animateLayoutChanges="true" />
 
     <ImageView
         android:id="@+id/postImg"
