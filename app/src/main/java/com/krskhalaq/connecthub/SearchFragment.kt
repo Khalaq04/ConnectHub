@@ -31,19 +31,19 @@ class SearchFragment : Fragment() {
                 userList.clear()
                 for (ds in snapshot.children) {
                     val uid = ds.child("userId").value.toString()
-                    val name = ds.child("userName").value.toString()
-                    Log.i("SearchFragment", "UID: $uid, NAME: $name")
-                    val user = User(uid, name)
-                    Log.i("SearchFragment", "UID: ${user.id}, NAME: ${user.name}")
-                    userList.add(user)
-
-                    searchRV = view.findViewById(R.id.searchRV)
-                    searchRV.setHasFixedSize(true)
-                    searchRV.layoutManager = GridLayoutManager(requireContext(), 3)
-                    val adapter = SearchFragmentAdapter(requireContext(), userList)
-//                    adapter.notifyDataSetChanged()
-                    searchRV.adapter = adapter
+                    if (uid != SignUpActivity.uId) {
+                        val name = ds.child("userName").value.toString()
+                        Log.i("SearchFragment", "UID: $uid, NAME: $name")
+                        val user = User(uid, name)
+                        Log.i("SearchFragment", "UID: ${user.id}, NAME: ${user.name}")
+                        userList.add(user)
+                    }
                 }
+                searchRV = view.findViewById(R.id.searchRV)
+                searchRV.setHasFixedSize(true)
+                searchRV.layoutManager = GridLayoutManager(requireContext(), 3)
+                val adapter = SearchFragmentAdapter(requireContext(), userList)
+                searchRV.adapter = adapter
             }
 
             override fun onCancelled(error: DatabaseError) {
