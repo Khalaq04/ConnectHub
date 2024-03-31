@@ -9,6 +9,9 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 
 class FrndsFragment : Fragment() {
 
@@ -20,14 +23,57 @@ class FrndsFragment : Fragment() {
 
         (activity as AppCompatActivity).supportActionBar?.title = "Friends"
 
-        val tempList = ArrayList<String>()
-        for (i in 1..10)
-            tempList.add("Friend $i")
+        val reqListString = ArrayList<String>()
+        val reqListUser = ArrayList<User>()
+        SignUpActivity.dbFirebase.getReference("Users").child(SignUpActivity.uId).child("ConnectReqReceived").addValueEventListener(object :
+            ValueEventListener {
+            @SuppressLint("NotifyDataSetChanged")
+            override fun onDataChange(snapshot: DataSnapshot) {
+                reqListString.clear()
+                reqListUser.clear()
+                for (ds in snapshot.children) {
+                    val uid = ds.value.toString()
+                    if (uid != SignUpActivity.uId) {
+                        reqListString.add(uid)
+                    }
+                }
 
-        frndsRV = view.findViewById(R.id.frndsRV)
-        frndsRV.setHasFixedSize(true)
-        frndsRV.layoutManager = LinearLayoutManager(requireContext())
-        frndsRV.adapter = FrndsFragmentAdapter(requireContext(), tempList)
+                SignUpActivity.dbFirebase.getReference("Users").addValueEventListener(object : ValueEventListener {
+                    @SuppressLint("NotifyDataSetChanged")
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        reqListUser.clear()
+                        for (ds in snapshot.children) {
+                            val uid = ds.child("userId").value.toString()
+                            for (req in reqListString) {
+                                if (uid != SignUpActivity.uId && req == uid) {
+                                    val name = ds.child("userName").value.toString()
+                                    val user = User(uid, name)
+//                                    Log.i("FrndsFragment", "UID: ${user.id}, NAME: ${user.name}")
+                                    reqListUser.add(user)
+                                    break
+                                }
+                            }
+                        }
+                        if (activity != null) {
+                            frndsRV = view.findViewById(R.id.frndsRV)
+                            frndsRV.setHasFixedSize(true)
+                            frndsRV.layoutManager = LinearLayoutManager(requireContext())
+                            frndsRV.adapter = FrndsFragmentAdapter(requireContext(), reqListUser)
+                        }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+
+                    }
+
+                })
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+        })
 
         return view
     }

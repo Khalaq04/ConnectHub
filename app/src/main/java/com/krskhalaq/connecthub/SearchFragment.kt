@@ -2,7 +2,6 @@ package com.krskhalaq.connecthub
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -33,17 +32,18 @@ class SearchFragment : Fragment() {
                     val uid = ds.child("userId").value.toString()
                     if (uid != SignUpActivity.uId) {
                         val name = ds.child("userName").value.toString()
-                        Log.i("SearchFragment", "UID: $uid, NAME: $name")
+//                        Log.i("SearchFragment", "UID: $uid, NAME: $name")
                         val user = User(uid, name)
-                        Log.i("SearchFragment", "UID: ${user.id}, NAME: ${user.name}")
+//                        Log.i("SearchFragment", "UID: ${user.id}, NAME: ${user.name}")
                         userList.add(user)
                     }
                 }
-                searchRV = view.findViewById(R.id.searchRV)
-                searchRV.setHasFixedSize(true)
-                searchRV.layoutManager = GridLayoutManager(requireContext(), 3)
-                val adapter = SearchFragmentAdapter(requireContext(), userList)
-                searchRV.adapter = adapter
+                if (activity != null) {
+                    searchRV = view.findViewById(R.id.searchRV)
+                    searchRV.setHasFixedSize(true)
+                    searchRV.layoutManager = GridLayoutManager(requireContext(), 3)
+                    searchRV.adapter = SearchFragmentAdapter(requireContext(), userList)
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {

@@ -2,7 +2,6 @@ package com.krskhalaq.connecthub
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -121,9 +120,9 @@ class SearchFragmentAdapter(private val context: Context, private val userList: 
                             dbRef.addListenerForSingleValueEvent(object : ValueEventListener {
                                 override fun onDataChange(snapshot: DataSnapshot) {
                                     for (ds in snapshot.children) {
-                                        Log.i("SearchFragmentAdapter", ds.value.toString())
+//                                        Log.i("SearchFragmentAdapter", ds.value.toString())
                                         if (ds.value.toString() == user.id) {
-                                            Log.i("SearchFragmentAdapter", ds.value.toString())
+//                                            Log.i("SearchFragmentAdapter", ds.value.toString())
                                             ds.ref.removeValue()
                                         }
                                     }
@@ -132,9 +131,9 @@ class SearchFragmentAdapter(private val context: Context, private val userList: 
                                     dbRef.addListenerForSingleValueEvent(object : ValueEventListener {
                                         override fun onDataChange(snapshot: DataSnapshot) {
                                             for (ds in snapshot.children) {
-                                                Log.i("SearchFragmentAdapter", ds.value.toString())
+//                                                Log.i("SearchFragmentAdapter", ds.value.toString())
                                                 if (ds.value.toString() == SignUpActivity.uId) {
-                                                    Log.i("SearchFragmentAdapter", ds.value.toString())
+//                                                    Log.i("SearchFragmentAdapter", ds.value.toString())
                                                     ds.ref.removeValue()
                                                 }
                                             }
