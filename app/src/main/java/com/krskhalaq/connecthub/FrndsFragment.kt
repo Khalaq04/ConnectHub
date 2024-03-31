@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -21,13 +20,13 @@ class FrndsFragment : Fragment() {
 
         (activity as AppCompatActivity).supportActionBar?.title = "Friends"
 
-        var tempList = ArrayList<String>()
+        val tempList = ArrayList<String>()
         for (i in 1..10)
             tempList.add("Friend $i")
 
         frndsRV = view.findViewById(R.id.frndsRV)
         frndsRV.setHasFixedSize(true)
-        frndsRV.layoutManager = GridLayoutManager(requireContext(), 3)
+        frndsRV.layoutManager = LinearLayoutManager(requireContext())
         frndsRV.adapter = FrndsFragmentAdapter(requireContext(), tempList)
 
         return view
