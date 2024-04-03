@@ -1,34 +1,14 @@
 package com.krskhalaq.connecthub
 
-import android.R.attr.key
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 
-
-class MessageAdapter( private val receiverId: String?) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    private var messages = HashMap<String, String>()
-    private var sId = ""
-    private var rId = ""
-    private var time = ""
-    private var m = ""
-
-    fun addMessage(message: Message) {
-        val currentUserID = SignUpActivity.uId
-       if ((currentUserID == message.senderId &&  receiverId == message.receiverId) ||( message.receiverId==currentUserID &&  receiverId == message.senderId)) {
-            sId = message.senderId
-            rId = message.receiverId
-            messages = message.hashMap
-            notifyDataSetChanged()
-
-       }
-    }
-
-
-
+class MessageAdapter( private val messages: ArrayList<Message>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == SENT_MESSAGE_VIEW_TYPE) {
             SentMessageViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_message_sent, parent, false))
@@ -37,34 +17,23 @@ class MessageAdapter( private val receiverId: String?) : RecyclerView.Adapter<Re
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-//        val message = messages[position]
-        var i = 0
-        var k : String? = null
-        var v : String = ""
-        val iterator: Iterator<*> = messages.keys.iterator()
-        while (iterator.hasNext()) {
-            if (i == position) {
-                k = iterator.next() as String?
-                v = messages.getValue(k!!)
-                time = k
-                m = v
-                break
-            }
-            i++
-        }
+        val message = messages[position].msg
+        val time = messages[position].time
 
         if (holder is SentMessageViewHolder) {
-            holder.bind(k!!, v)
+            holder.bind(message, time)
         } else if (holder is ReceivedMessageViewHolder) {
-            holder.bind(k!!, v)
+            holder.bind(message, time)
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun getItemCount(): Int = messages.size
 
     override fun getItemViewType(position: Int): Int {
-        return if (sId == SignUpActivity.uId) {
+        return if (messages.elementAt(position).senderId == SignUpActivity.uId) {
             SENT_MESSAGE_VIEW_TYPE
         } else {
             RECEIVED_MESSAGE_VIEW_TYPE
@@ -75,9 +44,9 @@ class MessageAdapter( private val receiverId: String?) : RecyclerView.Adapter<Re
         private val messageText: TextView = itemView.findViewById(R.id.textsentMessage)
         private val timestampText: TextView = itemView.findViewById(R.id.sentTextDateTime)
 
-        fun bind(timestamp : String, message : String) {
+        fun bind(message : String, time : String) {
             messageText.text = message
-            timestampText.text = timestamp
+            timestampText.text = time
         }
     }
 
@@ -85,9 +54,9 @@ class MessageAdapter( private val receiverId: String?) : RecyclerView.Adapter<Re
         private val messageText: TextView = itemView.findViewById(R.id.textrecvMessage)
         private val timestampText: TextView = itemView.findViewById(R.id.recvTextDateTime)
 
-        fun bind(timestamp : String, message : String) {
+        fun bind(message : String, time : String) {
             messageText.text = message
-            timestampText.text = timestamp
+            timestampText.text = time
         }
     }
 
