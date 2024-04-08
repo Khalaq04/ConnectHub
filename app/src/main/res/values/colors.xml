@@ -3,17 +3,17 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="orange">#E68233</color>
-    <color name="dark_gray">#444444</color>
     <color name="purple1">#AD83DB</color>
     <color name="dark_gray1">#333333</color>
     <color name="light_gray1">#EEEEEE</color>
-    <color name="dark_gray7">#777777</color>
+    <color name="light_gray2">#777777</color>
     <color name="dark_gray6">#666666</color>
     <color name="light_orange">#DB9D57</color>
-
-    <color name="dark_blue">#779ecc</color>
+    <color name="dark_gray">#333333</color>
     <color name="light_blue">#9fc0de</color>
     <color name="light_orange1">#f2c894</color>
-    <color name="medium_orange">#ffb347</color>
-    <color name="dark_orange">#ff985a</color>
+    <color name="light_gray3">#A3A2A2</color>
+    <color name="lighter_orange">#FFFF8543</color>
+    <color name="main_orange">#E68233</color>
+    <color name="light_orange_2">#ff985a</color>
 </resources>

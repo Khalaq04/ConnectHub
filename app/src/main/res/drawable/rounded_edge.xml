@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">    <solid
-    android:color="@color/light_orange1" >
-</solid>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid
+        android:color="@color/light_orange_2" >
+    </solid>
 
     <stroke
         android:width="2dp"
-        android:color="@color/light_orange1" >
+        android:color="@color/light_orange_2" >
     </stroke>
 
     <padding

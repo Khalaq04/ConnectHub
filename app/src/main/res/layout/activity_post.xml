@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:title="Post Image"
         app:titleTextColor="#000000"
-        android:background="@color/medium_orange"
+        android:background="@color/main_orange"
         app:menu="@menu/post_menu"
         app:itemIconTint="@color/black"
         android:focusable="true"

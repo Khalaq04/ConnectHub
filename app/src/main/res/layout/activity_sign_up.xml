@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_blue"
+    android:background="@color/black"
     tools:context=".SignUpActivity">
 
     <RelativeLayout
@@ -46,7 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ConnectHub"
-                android:textColor="@color/black"
+                android:textColor="@color/orange"
                 android:textSize="32sp"
                 android:textStyle="bold" />
 
@@ -92,7 +92,7 @@
                     android:inputType="text"
                     android:padding="12dp"
                     android:textColor="@color/dark_gray6"
-                    android:textColorHint="@color/dark_gray7" />
+                    android:textColorHint="@color/light_gray2" />
 
                 <EditText
                     android:id="@+id/email"
@@ -106,7 +106,7 @@
                     android:inputType="textEmailAddress"
                     android:padding="12dp"
                     android:textColor="@color/dark_gray6"
-                    android:textColorHint="@color/dark_gray7" />
+                    android:textColorHint="@color/light_gray2" />
 
                 <EditText
                     android:id="@+id/password"
@@ -120,7 +120,7 @@
                     android:inputType="textPassword"
                     android:padding="12dp"
                     android:textColor="@color/dark_gray6"
-                    android:textColorHint="@color/dark_gray7" />
+                    android:textColorHint="@color/light_gray2" />
 
                 <Button
                     android:id="@+id/login"

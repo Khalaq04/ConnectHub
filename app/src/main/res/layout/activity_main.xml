@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/dark_blue">
+    android:background="@color/dark_gray">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/medium_orange"
+        android:background="@color/main_orange"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,7 +26,7 @@
         android:id="@+id/mainFL"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/dark_blue"
+        android:background="@color/dark_gray"
         app:layout_constraintBottom_toTopOf="@+id/bottomNav"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +38,7 @@
         android:layout_height="70dp"
         android:layout_margin="10dp"
         android:background="@drawable/bottom_nav"
-        app:backgroundTint="@color/medium_orange"
+        app:backgroundTint="@color/main_orange"
         app:itemRippleColor="@android:color/transparent"
         app:labelVisibilityMode="selected"
         app:layout_constraintBottom_toBottomOf="parent"

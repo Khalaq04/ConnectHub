@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
 import androidx.appcompat.widget.Toolbar
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -53,6 +54,7 @@ class MainActivity : AppCompatActivity() {
         chatButton.setOnClickListener{
             setFragment(ChatFragment())
         }
+
     }
 
     private fun setFragment(fragment: Fragment) {
