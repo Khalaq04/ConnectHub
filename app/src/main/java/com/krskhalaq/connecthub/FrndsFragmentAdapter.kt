@@ -1,10 +1,12 @@
 package com.krskhalaq.connecthub
 
 import android.content.Context
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
@@ -28,9 +30,25 @@ class FrndsFragmentAdapter(private val context: Context, private val reqListUser
 
         private val frndsItemTV = itemView.findViewById<TextView>(R.id.frndsItemTV)
         private val acceptBtn: Button = itemView.findViewById(R.id.acceptBtn)
+        private val frndsItemIV: ImageView = itemView.findViewById(R.id.frndsItemIV)
 
         fun bind(position: Int) {
             frndsItemTV.text = reqListUser[position].name
+
+            var profileImg = ""
+            SignUpActivity.dbFirebase.getReference("Users").child(reqListUser[position].id).child("profileImage").get().addOnSuccessListener {
+                profileImg = it.value.toString()
+                if (profileImg.isNotEmpty()) {
+                    val imgRef = SignUpActivity.storage.getReferenceFromUrl(profileImg)
+                    imgRef.getBytes(10 * 1024 * 1024).addOnSuccessListener {it1 ->
+                        val bitmap = BitmapFactory.decodeByteArray(it1, 0, it1.size)
+                        frndsItemIV.setImageBitmap(bitmap)
+//                Log.i("HmAdapter", "Image Set!!!!!!!!!")
+                    }.addOnFailureListener {
+                        // Handle any errors
+                    }
+                }
+            }
 
             acceptBtn.setOnClickListener {
                 acceptConnectRequest(reqListUser[position])

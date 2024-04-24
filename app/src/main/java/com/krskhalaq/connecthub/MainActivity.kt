@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var toolbar: Toolbar
     private lateinit var bottomNav: BottomNavigationView
     private lateinit var chatButton: ImageButton
+    private lateinit var suggestion: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,10 +26,9 @@ class MainActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-
-        setFragment(HomeFragment())
-
         bottomNav = findViewById(R.id.bottomNav)
+        bottomNav.selectedItemId = R.id.post_nav
+        setFragment(PostFragment())
         bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.home_nav -> {
@@ -55,9 +55,14 @@ class MainActivity : AppCompatActivity() {
             setFragment(ChatFragment())
         }
 
+        suggestion = findViewById(R.id.suggestion)
+        suggestion.setOnClickListener{
+            setFragment(SuggestionFragment())
+        }
+
     }
 
-    private fun setFragment(fragment: Fragment) {
+    fun setFragment(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.mainFL, fragment)
         transaction.disallowAddToBackStack()

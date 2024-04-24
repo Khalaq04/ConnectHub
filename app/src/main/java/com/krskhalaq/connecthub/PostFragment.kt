@@ -23,6 +23,7 @@ import androidx.cardview.widget.CardView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat

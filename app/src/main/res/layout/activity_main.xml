@@ -37,22 +37,22 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_margin="10dp"
+        android:animateLayoutChanges="true"
         android:background="@drawable/bottom_nav"
+        android:clickable="true"
+        android:elevation="8dp"
+        android:focusable="true"
         app:backgroundTint="@color/main_orange"
+        app:itemActiveIndicatorStyle="@style/Widget.MaterialComponents.BottomNavigationView"
+        app:itemIconTint="@color/black"
         app:itemRippleColor="@android:color/transparent"
+        app:itemTextAppearanceActive="@color/black"
+        app:itemTextAppearanceInactive="@color/dark_gray"
         app:labelVisibilityMode="selected"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav"
-        app:itemIconTint="@color/black"
-        android:focusable="true"
-        android:clickable="true"
-        app:itemTextAppearanceActive="@color/black"
-        app:itemTextAppearanceInactive="@color/dark_gray"
-        app:itemActiveIndicatorStyle="@style/Widget.MaterialComponents.BottomNavigationView"
-        android:elevation="8dp"
-        android:animateLayoutChanges="true" />
+        app:menu="@menu/bottom_nav" />
 
     <ImageButton
         android:id="@+id/chat"
@@ -66,6 +66,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.016"
         app:srcCompat="@drawable/chat_icon" />
+
+    <ImageButton
+        android:id="@+id/suggestion"
+        android:layout_width="75dp"
+        android:layout_height="46dp"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.717"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.016"
+        app:srcCompat="@drawable/suggestion1" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

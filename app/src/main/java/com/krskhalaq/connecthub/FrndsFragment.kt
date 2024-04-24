@@ -47,7 +47,8 @@ class FrndsFragment : Fragment() {
                             for (req in reqListString) {
                                 if (uid != SignUpActivity.uId && req == uid) {
                                     val name = ds.child("userName").value.toString()
-                                    val user = User(uid, name)
+                                    val profPic = ds.child("profileImage").value.toString()
+                                    val user = User(uid, name, profPic)
 //                                    Log.i("FrndsFragment", "UID: ${user.id}, NAME: ${user.name}")
                                     reqListUser.add(user)
                                     break

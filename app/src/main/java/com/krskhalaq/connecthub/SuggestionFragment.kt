@@ -13,24 +13,26 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 
-class SearchFragment : Fragment() {
+class SuggestionFragment : Fragment() {
 
-    private lateinit var searchRV: RecyclerView
+    private lateinit var suggestionRV: RecyclerView
 
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_search, container, false)
+        val view = inflater.inflate(R.layout.fragment_suggestion, container, false)
 
-        (activity as AppCompatActivity).supportActionBar?.title = "Search"
+        (activity as AppCompatActivity).supportActionBar?.title = "Suggestions"
 
         val userList = ArrayList<User>()
         SignUpActivity.dbFirebase.getReference("Users").addValueEventListener(object : ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(snapshot: DataSnapshot) {
                 userList.clear()
+                val loc = snapshot.child(SignUpActivity.uId).child("location").value.toString()
                 for (ds in snapshot.children) {
                     val uid = ds.child("userId").value.toString()
-                    if (uid != SignUpActivity.uId) {
+                    val loc1 = ds.child("location").value.toString()
+                    if (uid != SignUpActivity.uId && loc == loc1) {
                         val name = ds.child("userName").value.toString()
                         val profPic = ds.child("profileImage").value.toString()
 //                        Log.i("SearchFragment", "UID: $uid, NAME: $name")
@@ -40,10 +42,10 @@ class SearchFragment : Fragment() {
                     }
                 }
                 if (activity != null) {
-                    searchRV = view.findViewById(R.id.searchRV)
-                    searchRV.setHasFixedSize(true)
-                    searchRV.layoutManager = GridLayoutManager(requireContext(), 3)
-                    searchRV.adapter = SearchFragmentAdapter(requireContext(), userList)
+                    suggestionRV = view.findViewById(R.id.suggestionRV)
+                    suggestionRV.setHasFixedSize(true)
+                    suggestionRV.layoutManager = GridLayoutManager(requireContext(), 3)
+                    suggestionRV.adapter = SearchFragmentAdapter(requireContext(), userList)
                 }
             }
 
