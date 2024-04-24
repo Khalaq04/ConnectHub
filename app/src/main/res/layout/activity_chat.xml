@@ -23,13 +23,12 @@
         android:id="@+id/imageBack"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:src="@drawable/ic_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textName"
@@ -51,11 +50,13 @@
         android:id="@+id/layputSend"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="12dp"
         android:background="@drawable/bg_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/inputMess">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/send_btn"
@@ -65,7 +66,7 @@
             android:layout_marginLeft="4dp"
             android:padding="8dp"
             android:src="@drawable/ic_send"
-            android:tint="@color/black"/>
+            android:tint="@color/black" />
 
     </FrameLayout>
 
@@ -93,9 +94,11 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/messagesRV"
-        android:layout_width="409dp"
-        android:layout_height="627dp"
+        android:layout_width="0dp"
+        android:layout_height="450dp"
         android:layout_above="@id/OverallLayout"
+        android:layout_margin="4dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="2dp"
         android:background="@color/light_gray2"
